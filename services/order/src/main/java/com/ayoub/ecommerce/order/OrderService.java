@@ -6,6 +6,8 @@ import com.ayoub.ecommerce.kafka.OrderConfirmation;
 import com.ayoub.ecommerce.kafka.OrderProducer;
 import com.ayoub.ecommerce.orderline.OrderLineRequest;
 import com.ayoub.ecommerce.orderline.OrderLineService;
+import com.ayoub.ecommerce.payment.PaymentClient;
+import com.ayoub.ecommerce.payment.PaymentRequest;
 import com.ayoub.ecommerce.product.ProductClient;
 import com.ayoub.ecommerce.product.PurchaseRequest;
 import jakarta.validation.Valid;
@@ -23,6 +25,7 @@ public class OrderService {
     private final OrderMapper mapper;
     private final OrderLineService orderLineService;
     private final OrderProducer orderProducer;
+    private final PaymentClient paymentClient;
 
 
     public Integer createOrder(@Valid OrderRequest orderRequest) {
@@ -53,6 +56,16 @@ public class OrderService {
 
 
         // todo start payment process --> payment-ms
+        var paymentRequest = new PaymentRequest(
+                orderRequest.productId(),
+                orderRequest.amount(),
+                orderRequest.paymentMethod(),
+                order.getId(),
+                order.getReference(),
+                customer
+        );
+        paymentClient.createPayment(paymentRequest);
+
 
 
         // send the order confirmation --> notification-ms(kafka)
