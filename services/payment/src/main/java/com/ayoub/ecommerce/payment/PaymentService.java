@@ -4,6 +4,7 @@ import com.ayoub.ecommerce.notification.NotificationPaymentRequest;
 import com.ayoub.ecommerce.notification.NotificationProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -12,6 +13,7 @@ public class PaymentService {
     private final PayementMapper mapper;
     private final NotificationProducer notificationProducer;
 
+    @Transactional
     public Integer createPayment(PaymentRequest request) {
         var payment = paymentRepository.save(mapper.toPayment(request));
 
