@@ -1,21 +1,20 @@
 spring:
-  data:
-    mongodb:
-      password: ayoub
-      username: root
-      host: localhost
-      database: customer
-      authentication-database: admin
+  mongodb:
+    password: ayoub
+    username: root
+    host: localhost
+    database: customer
+    authentication-database: admin
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
-      group-id: payment-group,order-group
+      group-id: notification-service
       auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringSerializer
-      value-deserializer: org.springframework.kafka.support.serializer.JacksonJsonSerializer
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
       properties:
         spring.json.trusted.packages: '*'
-        spring.json.type.mapping: orderConfirmation:com.ayoub.ecommerce.kafka.OrderConfirmation,paymentConfirmation:com.ayoub.ecommerce.notification.NotificationPaymentRequest
+        spring.json.type.mapping: orderConfirmation:com.ayoub.ecommerce.kafka.order.OrderConfirmation,paymentConfirmation:com.ayoub.ecommerce.kafka.payment.PaymentConfirmation
   mail:
     host: localhost
     port: 1025

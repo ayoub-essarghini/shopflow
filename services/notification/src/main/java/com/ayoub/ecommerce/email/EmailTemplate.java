@@ -3,7 +3,7 @@ package com.ayoub.ecommerce.email;
 import lombok.Getter;
 
 public enum EmailTemplate {
-    PAYMENT_CONFIRMATION("payement-confirmation.html","Payment successfully processed"),
+    PAYMENT_CONFIRMATION("payment-confirmation.html","Payment successfully processed"),
     ORDER_CONFIRMATION("order-confirmation.html", "Order Confirmation")
     ;
 
@@ -17,4 +17,3 @@ public enum EmailTemplate {
         this.subject = subject;
     }
 }
-
