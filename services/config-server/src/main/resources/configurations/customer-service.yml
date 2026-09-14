@@ -1,10 +1,9 @@
 spring:
-  data:
-    mongodb:
-      password: ayoub
-      username: root
-      host: localhost
-      database: customer
-      authentication-database: admin
+  mongodb:
+    password: ayoub
+    username: root
+    host: localhost
+    database: customer
+    authentication-database: admin
 server:
   port: 8090
