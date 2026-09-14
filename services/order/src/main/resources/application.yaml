@@ -1,5 +1,5 @@
 spring:
   config:
-    import: optional:configServer:http://localhost:8888
+    import: optional:configserver:http://localhost:8888
   application:
     name: order-service
