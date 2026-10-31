@@ -11,7 +11,7 @@ public class OrderLineMapper {
                 .id(orderLineRequest.id())
                 .quantity(orderLineRequest.quantity())
                 .productId(orderLineRequest.productId())
-                .order(Order.builder().id(orderLineRequest.id()).build())
+                .order(Order.builder().id(orderLineRequest.orderId()).build())
                 .build();
     }
 

@@ -17,3 +17,15 @@ Use plural API paths consistently:
 - `/api/v1/orders`
 
 Before debugging service code, verify dependencies with `docker compose ps`, check Eureka at `http://localhost:8761`, and confirm the service received its remote configuration from `http://localhost:8888/<service-name>/default`.
+
+## API gateway end-to-end test
+
+With the infrastructure and services running, execute:
+
+```bash
+./scripts/test-api-gateway.sh
+```
+
+The script exercises customer CRUD, product creation and purchasing, payment validation and creation, order creation and retrieval, order lines, inventory changes, and Kafka notification persistence. It generates unique data and cleans up only the records created by its run.
+
+Use `./scripts/test-api-gateway.sh --help` for authentication, remote gateway, timeout, verbose output, notification, and cleanup options.

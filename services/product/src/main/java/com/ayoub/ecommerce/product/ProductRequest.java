@@ -1,5 +1,6 @@
 package com.ayoub.ecommerce.product;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
@@ -7,12 +8,14 @@ import java.math.BigDecimal;
 
 public record ProductRequest(
         Integer id,
-        @NotNull(message = "Product name is required")
+        @NotBlank(message = "Product name is required")
         String name,
-        @NotNull(message = "Product name is required")
+        @NotBlank(message = "Product description is required")
         String description,
+        @NotNull(message = "Available quantity is required")
         @Positive(message = "Available quantity must be positive")
         Double availableQuantity,
+        @NotNull(message = "Price is required")
         @Positive(message = "Price must be positive")
         BigDecimal price,
         @NotNull(message = "Category is required")

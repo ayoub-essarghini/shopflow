@@ -4,6 +4,7 @@ import com.ayoub.ecommerce.exception.ProductPurchaseException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -24,6 +25,7 @@ public class ProductService {
         return product.getId();
     }
 
+    @Transactional
     public List<PurchaseResponse> purchaseProducts(List<PurchaseRequest> request) {
 
         var productIds = request.stream().map(PurchaseRequest::productId).toList();

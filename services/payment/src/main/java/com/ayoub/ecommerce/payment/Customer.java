@@ -4,7 +4,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 public record Customer(
-        Integer id ,
+        String id,
         @NotBlank(message = "Customer first name required")
         String firstName,
         @NotBlank(message = "Customer last name required")

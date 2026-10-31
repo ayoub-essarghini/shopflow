@@ -55,6 +55,6 @@ public class NotificationConsumer {
         );
 
        var customerName = orderConfirmation.customer().firstName()+orderConfirmation.customer().lastName();
-        emailService.sendOrderConfirmationEmail(orderConfirmation.customer().email(),customerName,orderConfirmation.totalAmount(),orderConfirmation.orderReference(),orderConfirmation.products());
+        emailService.sendOrderConfirmationEmail(orderConfirmation.customer().email(),customerName,orderConfirmation.amount(),orderConfirmation.orderReference(),orderConfirmation.products());
     }
 }

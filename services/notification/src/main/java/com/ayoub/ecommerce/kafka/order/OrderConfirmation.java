@@ -5,7 +5,7 @@ import java.util.List;
 
 public record OrderConfirmation(
         String orderReference,
-        BigDecimal totalAmount,
+        BigDecimal amount,
         PaymentMethod paymentMethod,
         Customer customer,
         List<Product> products
